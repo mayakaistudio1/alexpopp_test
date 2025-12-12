@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Александр Попп — Трейдинг система</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ---------- ROOT THEME ---------- */
+:root {
+  --neo-green: #00FF9D;
+  --neo-green-dark: #00CC7D;
+  --neo-glow: 0 0 22px rgba(0,255,157,0.35);
+  --bg-black: #000;
+  --bg-card: #0F0F0F;
+  --text-white: #fff;
+  --text-muted: #B8B8B8;
+  --radius: 14px;
+  --font-main: 'Montserrat', sans-serif;
+  --font-alt: 'Inter', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg-black);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  line-height: 1.55;
+}
+
+/* ---------- LANGUAGE SWITCHER ---------- */
+.lang-switcher {
+  text-align:right;
+  padding:20px 30px;
+}
+.lang-switcher a {
+  margin-left:15px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+  color:var(--neo-green);
+}
+.lang-switcher a:hover { opacity:0.7; }
+
+/* ---------- GLOBAL SECTIONS ---------- */
+section { padding: 70px 20px; }
+.container { max-width:1080px; margin:0 auto; }
+
+/* ---------- BADGES ---------- */
+.badge, .section-badge {
+  display:inline-block;
+  padding:10px 22px;
+  background:var(--neo-green);
+  color:#000;
+  font-weight:700;
+  border-radius:30px;
+  font-size:14px;
+  margin-bottom:30px;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display:inline-block;
+  padding:18px 40px;
+  background:var(--neo-green);
+  color:#000;
+  border-radius:10px;
+  font-weight:700;
+  font-family:var(--font-alt);
+  font-size:18px;
+  text-decoration:none;
+  box-shadow:var(--neo-glow);
+  transition:0.25s;
+}
+.btn:hover { background:var(--neo-green-dark); }
+
+/* ---------- HERO ---------- */
+.hero {
+  text-align:center;
+  padding-top:80px;
+  padding-bottom:30px;
+}
+.hero h1 {
+  font-size:58px;
+  font-weight:900;
+  line-height:1.1;
+  margin-bottom:18px;
+}
+.hero p {
+  max-width:780px;
+  margin:0 auto 18px;
+  font-size:20px;
+  color:var(--text-muted);
+}
+
+/* ---------- AVATAR ---------- */
+.avatar-section {
+  text-align:center;
+  padding-top:40px !important;
+  padding-bottom:70px;
+}
+
+.avatar-frame {
+  max-width:720px;
+  margin:0 auto;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:2px solid var(--neo-green);
+  box-shadow:var(--neo-glow);
+}
+.avatar-frame iframe {
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ---------- LIST (centered, no bullets) ---------- */
+.list {
+  margin-top:25px;
+  text-align:center;
+  list-style:none;
+  padding-left:0;
+}
+.list li {
+  margin-bottom:14px;
+  font-size:19px;
+  color:var(--text-muted);
+}
+
+/* ---------- FORM ---------- */
+.form-wrapper {
+  max-width:500px;
+  margin:0 auto;
+  background:var(--bg-card);
+  padding:40px;
+  border-radius:var(--radius);
+  border:1px solid #1A1A1A;
+}
+.form-wrapper h2 {
+  font-size:32px;
+  margin-bottom:10px;
+  text-align:center;
+}
+.form-wrapper p {
+  text-align:center;
+  margin-bottom:30px;
+  color:var(--text-muted);
+}
+.form-wrapper input {
+  width:100%;
+  padding:16px;
+  border-radius:10px;
+  border:1px solid #222;
+  background:#000;
+  color:var(--text-white);
+  margin-bottom:18px;
+  font-size:16px;
+}
+.form-wrapper input:focus {
+  outline:none;
+  border-color:var(--neo-green);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding:50px 20px;
+  text-align:center;
+  background:#080808;
+  margin-top:60px;
+}
+footer a {
+  color:var(--neo-green);
+  font-size:16px;
+  text-decoration:none;
+  display:block;
+  margin-bottom:6px;
+}
+footer p { color:#555; margin-top:25px; }
+
+/* ---------- MOBILE ---------- */
+@media(max-width:768px) {
+  .hero h1 { font-size:38px; }
+  .hero p { font-size:18px; }
+  section { padding:55px 20px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher">
+  <a href="../index.html">EN</a>
+  <a href="index.html">RU</a>
+  <a href="../de/index.html">DE</a>
+</div>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="badge">Открыто только 10 мест в первую линию</div>
+
+  <h1>Александр Попп — ваш проводник в мир трейдинга.</h1>
+
+  <p>Сегодня я выбираю путь через возможности Forex — рынок, где деньги работают на вас.</p>
+  <p>Я покажу систему, с которой работаю сам: понятную, прозрачную и доступную каждому.</p>
+  <p>Вы можете зарабатывать пассивно или выстроить партнёрский бизнес с реальной перспективой роста.</p>
+</section>
+
+<!-- LIVE AVATAR -->
+<section id="avatar" class="avatar-section container">
+
+  <div class="section-badge">Моя ассистентка на связи</div>
+
+  <h2 style="font-size:40px; margin-bottom:20px; text-align:center;">Мария готова помочь</h2>
+
+  <p style="max-width:720px; margin:0 auto 40px; font-size:19px;">
+    Пообщайтесь с Марией — она ответит на ваши вопросы, покажет текущие возможности и поможет назначить встречу со мной.
+  </p>
+
+  <div class="avatar-frame">
+    <iframe src="https://embed.liveavatar.com/v1/b23834e5-0b84-4c70-8fb2-336920c0ccb8"
+            allow="microphone" title="LiveAvatar"></iframe>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="container">
+
+  <h2 style="text-align:center; font-size:40px;">Обо мне</h2>
+
+  <ul class="list" style="max-width:760px; margin:30px auto;">
+    <li>Более 20 лет опыта в сфере финансов</li>
+    <li>Объясняю сложные вещи простым языком</li>
+    <li>Сопровождаю новичков без перегрузки</li>
+    <li>Даю систему, которую легко повторить</li>
+    <li>Помогаю строить команду тем, кто хочет большего</li>
+  </ul>
+</section>
+
+<!-- FORM -->
+<section class="container">
+  <div class="form-wrapper">
+    <h2>Сделайте первый шаг</h2>
+    <p>Оставьте заявку, и я свяжусь с вами лично.</p>
+
+    <form>
+      <input type="text" placeholder="Ваше имя" required />
+      <input type="text" placeholder="Телефон / WhatsApp / Telegram" required />
+      <input type="text" placeholder="Ваш запрос (коротко)" required />
+      <button type="submit" class="btn" style="width:100%;">Отправить заявку</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414"
+     target="_blank">Скачать презентацию</a>
+
+  <p>© 2025 Александр Попп — Наставничество и трейдинг-система</p>
+</footer>
+
+</body>
+</html>
