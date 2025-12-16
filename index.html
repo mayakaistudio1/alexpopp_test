@@ -44,9 +44,8 @@ body {
   font-size:14px;
   color:var(--neo-green);
 }
-.lang-switcher a:hover { opacity:0.7; }
 
-/* ---------- GLOBAL SECTIONS ---------- */
+/* ---------- GLOBAL ---------- */
 section { padding: 70px 20px; }
 .container { max-width:1080px; margin:0 auto; }
 
@@ -61,22 +60,6 @@ section { padding: 70px 20px; }
   font-size:14px;
   margin-bottom:30px;
 }
-
-/* ---------- BUTTONS ---------- */
-.btn {
-  display:inline-block;
-  padding:18px 40px;
-  background:var(--neo-green);
-  color:#000;
-  border-radius:10px;
-  font-weight:700;
-  font-family:var(--font-alt);
-  font-size:18px;
-  text-decoration:none;
-  box-shadow:var(--neo-glow);
-  transition:0.25s;
-}
-.btn:hover { background:var(--neo-green-dark); }
 
 /* ---------- HERO ---------- */
 .hero {
@@ -103,7 +86,6 @@ section { padding: 70px 20px; }
   padding-top:40px !important;
   padding-bottom:70px;
 }
-
 .avatar-frame {
   max-width:720px;
   margin:0 auto;
@@ -118,12 +100,11 @@ section { padding: 70px 20px; }
   border:none;
 }
 
-/* ---------- LIST (about — centered, no bullets) ---------- */
+/* ---------- LIST ---------- */
 .list {
   margin-top:25px;
   text-align:center;
   list-style:none;
-  padding-left:0;
 }
 .list li {
   margin-bottom:14px;
@@ -131,38 +112,65 @@ section { padding: 70px 20px; }
   color:var(--text-muted);
 }
 
-/* ---------- FORM ---------- */
+/* ---------- FORM CARD ---------- */
 .form-wrapper {
-  max-width:500px;
+  max-width:520px;
   margin:0 auto;
   background:var(--bg-card);
   padding:40px;
   border-radius:var(--radius);
   border:1px solid #1A1A1A;
-}
-.form-wrapper h2 {
-  font-size:32px;
-  margin-bottom:10px;
   text-align:center;
 }
-.form-wrapper p {
-  text-align:center;
-  margin-bottom:30px;
-  color:var(--text-muted);
+
+/* ---------- OPTIONS ---------- */
+.options {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-bottom:26px;
 }
-.form-wrapper input {
-  width:100%;
+.option {
   padding:16px;
-  border-radius:10px;
-  border:1px solid #222;
+  border-radius:14px;
   background:#000;
-  color:var(--text-white);
-  margin-bottom:18px;
-  font-size:16px;
+  border:1px solid #222;
+  cursor:pointer;
+  transition:.2s;
 }
-.form-wrapper input:focus {
-  outline:none;
+.option.active {
   border-color:var(--neo-green);
+  box-shadow:0 0 0 1px rgba(0,255,157,0.4), var(--neo-glow);
+}
+
+/* ---------- ICONS ---------- */
+.icons {
+  display:flex;
+  justify-content:center;
+  gap:28px;
+}
+.icon-btn {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+.whatsapp {
+  color:#25d366;
+  box-shadow:0 0 22px rgba(37,211,102,.45);
+}
+.telegram {
+  color:#2aabee;
+  box-shadow:0 0 22px rgba(42,171,238,.45);
+}
+.icon-label {
+  font-size:10px;
+  color:#9aa0b5;
 }
 
 /* ---------- FOOTER ---------- */
@@ -170,22 +178,16 @@ footer {
   padding:50px 20px;
   text-align:center;
   background:#080808;
-  margin-top:60px;
 }
 footer a {
   color:var(--neo-green);
-  font-size:16px;
   text-decoration:none;
-  display:block;
-  margin-bottom:6px;
 }
-footer p { color:#555; margin-top:25px; }
 
 /* ---------- MOBILE ---------- */
-@media(max-width:768px) {
+@media(max-width:768px){
   .hero h1 { font-size:38px; }
   .hero p { font-size:18px; }
-  section { padding:55px 20px; }
 }
 
 </style>
@@ -200,7 +202,7 @@ footer p { color:#555; margin-top:25px; }
   <a href="de/index.html">DE</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO (ВОССТАНОВЛЕН ПОЛНОСТЬЮ) -->
 <section class="hero container">
   <div class="badge">Only 10 spots open in the first line</div>
 
@@ -213,28 +215,20 @@ footer p { color:#555; margin-top:25px; }
 
 <!-- LIVE AVATAR -->
 <section id="avatar" class="avatar-section container">
-
   <div class="section-badge">Talk to my assistant</div>
-
-  <h2 style="font-size:40px; margin-bottom:20px; text-align:center;">Maria is online</h2>
-
+  <h2 style="font-size:40px; margin-bottom:20px;">Maria is online</h2>
   <p style="max-width:720px; margin:0 auto 40px; font-size:19px;">
     Chat with Maria — she will answer your questions, show current possibilities, and arrange a call with me if needed.
   </p>
-
   <div class="avatar-frame">
-   
-<iframe src="https://embed.liveavatar.com/v1/b66ef800-ec38-4a2d-8560-be4a2e0d53f1" allow="microphone" title="LiveAvatar Embed" style="aspect-ratio: 16/9;"></iframe>
-
+    <iframe src="https://embed.liveavatar.com/v1/b66ef800-ec38-4a2d-8560-be4a2e0d53f1" allow="microphone"></iframe>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="container">
-
   <h2 style="text-align:center; font-size:40px;">About Me</h2>
-
-  <ul class="list" style="max-width:760px; margin:30px auto;">
+  <ul class="list">
     <li>20+ years of experience in finance</li>
     <li>Explaining complex things in simple words</li>
     <li>Guiding beginners without overwhelming them</li>
@@ -243,29 +237,74 @@ footer p { color:#555; margin-top:25px; }
   </ul>
 </section>
 
-<!-- FORM -->
+<!-- FORM (НОВАЯ, РАБОЧАЯ) -->
 <section class="container">
   <div class="form-wrapper">
-    <h2>Take the First Step</h2>
-    <p>Leave your application, and I will contact you personally.</p>
+    <h2>Contact Alexander</h2>
+    <p>Choose what you’re interested in — direct contact, no forms.</p>
 
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="text" placeholder="Phone / WhatsApp / Telegram" required />
-      <input type="text" placeholder="Your request (briefly)" required />
-      <button type="submit" class="btn" style="width:100%;">Submit Application</button>
-    </form>
+    <div class="options">
+      <div class="option active" data-interest="Passive income">Passive income</div>
+      <div class="option" data-interest="Building a team">Building a team</div>
+      <div class="option" data-interest="Just want an overview">Just want an overview</div>
+    </div>
+
+    <div class="icons">
+      <a id="waLink" class="icon-btn whatsapp" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.52 3.48A11.91 11.91 0 0012.06 0C5.5 0 .14 5.37.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.79 1.48h.01c6.57 0 11.93-5.37 11.93-11.94a11.87 11.87 0 00-3.48-8.42z"/>
+        </svg>
+        <div class="icon-label">WhatsApp</div>
+      </a>
+
+      <a id="tgLink" class="icon-btn telegram" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.04 15.45l-.38 5.35c.55 0 .78-.24 1.06-.52l2.54-2.42 5.27 3.86c.97.53 1.66.25 1.9-.9L24 2.66c.3-1.36-.5-1.9-1.42-1.56L1.6 9.33c-1.33.53-1.31 1.28-.23 1.61l5.33 1.66L19.3 4.7c.6-.39 1.15-.18.7.21z"/>
+        </svg>
+        <div class="icon-label">Telegram</div>
+      </a>
+    </div>
+
+    <p style="margin-top:18px; font-size:12px; color:#7f859a;">
+      Direct contact. No spam.
+    </p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-
-  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414"
-     target="_blank">Download Presentation</a>
-
+  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank">
+    Download Presentation
+  </a>
   <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
+
+<script>
+const options = document.querySelectorAll('.option');
+const waLink = document.getElementById('waLink');
+const tgLink = document.getElementById('tgLink');
+
+let selectedInterest = 'Passive income';
+const whatsappNumber = '491748660007';
+const telegramUser = 'cryptopopp';
+
+function updateLinks() {
+  const msg = encodeURIComponent(
+    `Hi Alexander, I'm interested in: ${selectedInterest}`
+  );
+  waLink.href = `https://wa.me/${whatsappNumber}?text=${msg}`;
+  tgLink.href = `https://t.me/${telegramUser}?text=${msg}`;
+}
+options.forEach(o => {
+  o.onclick = () => {
+    options.forEach(x => x.classList.remove('active'));
+    o.classList.add('active');
+    selectedInterest = o.dataset.interest;
+    updateLinks();
+  };
+});
+updateLinks();
+</script>
 
 </body>
 </html>
