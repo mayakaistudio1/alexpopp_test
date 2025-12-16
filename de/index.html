@@ -8,50 +8,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* ---------- ROOT THEME ---------- */
 :root {
-  --neo-green: #00FF9D;
-  --neo-green-dark: #00CC7D;
-  --neo-glow: 0 0 22px rgba(0,255,157,0.35);
-  --bg-black: #000;
-  --bg-card: #0F0F0F;
-  --text-white: #fff;
-  --text-muted: #B8B8B8;
-  --radius: 14px;
-  --font-main: 'Montserrat', sans-serif;
-  --font-alt: 'Inter', sans-serif;
+  --neo-green:#00FF9D;
+  --neo-green-dark:#00CC7D;
+  --neo-glow:0 0 22px rgba(0,255,157,.35);
+  --bg-black:#000;
+  --bg-card:#0F0F0F;
+  --text-white:#fff;
+  --text-muted:#B8B8B8;
+  --radius:14px;
+  --font-main:'Montserrat',sans-serif;
+  --font-alt:'Inter',sans-serif;
 }
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  background: var(--bg-black);
-  color: var(--text-white);
-  font-family: var(--font-main);
-  line-height: 1.55;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--bg-black);
+  color:var(--text-white);
+  font-family:var(--font-main);
+  line-height:1.55;
 }
-
-/* ---------- LANGUAGE SWITCHER ---------- */
-.lang-switcher {
-  text-align:right;
-  padding:20px 30px;
-}
-.lang-switcher a {
-  margin-left:15px;
-  text-decoration:none;
-  font-weight:700;
-  font-size:14px;
-  color:var(--neo-green);
-}
-.lang-switcher a:hover { opacity:0.7; }
-
-/* ---------- GLOBAL SECTIONS ---------- */
-section { padding: 70px 20px; }
-.container { max-width:1080px; margin:0 auto; }
-
-/* ---------- BADGES ---------- */
-.badge, .section-badge {
+section{padding:70px 20px;}
+.container{max-width:1080px;margin:0 auto;}
+.lang-switcher{text-align:right;padding:20px 30px;}
+.lang-switcher a{margin-left:15px;color:var(--neo-green);font-weight:700;text-decoration:none;font-size:14px;}
+.badge,.section-badge{
   display:inline-block;
   padding:10px 22px;
   background:var(--neo-green);
@@ -61,50 +41,11 @@ section { padding: 70px 20px; }
   font-size:14px;
   margin-bottom:30px;
 }
-
-/* ---------- BUTTONS ---------- */
-.btn {
-  display:inline-block;
-  padding:18px 40px;
-  background:var(--neo-green);
-  color:#000;
-  border-radius:10px;
-  font-weight:700;
-  font-family:var(--font-alt);
-  font-size:18px;
-  text-decoration:none;
-  box-shadow:var(--neo-glow);
-  transition:0.25s;
-}
-.btn:hover { background:var(--neo-green-dark); }
-
-/* ---------- HERO ---------- */
-.hero {
-  text-align:center;
-  padding-top:80px;
-  padding-bottom:30px;
-}
-.hero h1 {
-  font-size:58px;
-  font-weight:900;
-  line-height:1.1;
-  margin-bottom:18px;
-}
-.hero p {
-  max-width:780px;
-  margin:0 auto 18px;
-  font-size:20px;
-  color:var(--text-muted);
-}
-
-/* ---------- AVATAR ---------- */
-.avatar-section {
-  text-align:center;
-  padding-top:40px !important;
-  padding-bottom:70px;
-}
-
-.avatar-frame {
+.hero{text-align:center;padding-top:80px;padding-bottom:30px;}
+.hero h1{font-size:58px;font-weight:900;margin-bottom:18px;}
+.hero p{max-width:780px;margin:0 auto 18px;font-size:20px;color:var(--text-muted);}
+.avatar-section{text-align:center;padding-top:40px!important;padding-bottom:70px;}
+.avatar-frame{
   max-width:720px;
   margin:0 auto;
   border-radius:var(--radius);
@@ -112,130 +53,100 @@ section { padding: 70px 20px; }
   border:2px solid var(--neo-green);
   box-shadow:var(--neo-glow);
 }
-.avatar-frame iframe {
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
-}
+.avatar-frame iframe{width:100%;aspect-ratio:16/9;border:none;}
+.list{text-align:center;list-style:none;}
+.list li{margin-bottom:14px;font-size:19px;color:var(--text-muted);}
 
-/* ---------- LIST (centered, no bullets) ---------- */
-.list {
-  margin-top:25px;
-  text-align:center;
-  list-style:none;
-  padding-left:0;
-}
-.list li {
-  margin-bottom:14px;
-  font-size:19px;
-  color:var(--text-muted);
-}
-
-/* ---------- FORM ---------- */
-.form-wrapper {
-  max-width:500px;
+/* CONTACT */
+.form-wrapper{
+  max-width:520px;
   margin:0 auto;
   background:var(--bg-card);
   padding:40px;
   border-radius:var(--radius);
   border:1px solid #1A1A1A;
-}
-.form-wrapper h2 {
-  font-size:32px;
-  margin-bottom:10px;
   text-align:center;
 }
-.form-wrapper p {
-  text-align:center;
-  margin-bottom:30px;
-  color:var(--text-muted);
-}
-.form-wrapper input {
-  width:100%;
+.options{display:flex;flex-direction:column;gap:14px;margin:26px 0;}
+.option{
   padding:16px;
-  border-radius:10px;
-  border:1px solid #222;
+  border-radius:14px;
   background:#000;
-  color:var(--text-white);
-  margin-bottom:18px;
-  font-size:16px;
+  border:1px solid #222;
+  cursor:pointer;
 }
-.form-wrapper input:focus {
-  outline:none;
+.option.active{
   border-color:var(--neo-green);
+  box-shadow:var(--neo-glow);
 }
+.icons{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-top:10px;
+}
+.icon-btn{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+.whatsapp{color:#25d366;box-shadow:0 0 22px rgba(37,211,102,.45);}
+.telegram{color:#2aabee;box-shadow:0 0 22px rgba(42,171,238,.45);}
+.icon-label{font-size:10px;color:#9aa0b5;margin-top:4px;}
 
-/* ---------- FOOTER ---------- */
-footer {
+footer{
   padding:50px 20px;
   text-align:center;
   background:#080808;
   margin-top:60px;
 }
-footer a {
-  color:var(--neo-green);
-  font-size:16px;
-  text-decoration:none;
-  display:block;
-  margin-bottom:6px;
-}
-footer p { color:#555; margin-top:25px; }
+footer a{color:var(--neo-green);text-decoration:none;}
+footer p{color:#555;margin-top:25px;}
 
-/* ---------- MOBILE ---------- */
-@media(max-width:768px) {
-  .hero h1 { font-size:38px; }
-  .hero p { font-size:18px; }
-  section { padding:55px 20px; }
+@media(max-width:768px){
+  .hero h1{font-size:38px;}
+  .hero p{font-size:18px;}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- LANGUAGE SWITCHER -->
 <div class="lang-switcher">
   <a href="../index.html">EN</a>
   <a href="../ru/index.html">RU</a>
   <a href="index.html">DE</a>
 </div>
 
-<!-- HERO -->
 <section class="hero container">
   <div class="badge">Nur 10 Plätze in der ersten Linie verfügbar</div>
-
-  <h1>Dein Wegweiser in die Welt des passiven Einkommens. </h1>
-
+  <h1>Dein Wegweiser in die Welt des passiven Einkommens.</h1>
   <p>Heute entscheide ich mich für Forex – einen Markt, in dem Ihr Geld für Sie arbeiten kann.</p>
   <p>Ich zeige Ihnen das System, mit dem ich selbst arbeite: klar strukturiert, transparent und für jeden zugänglich.</p>
   <p>Ob passives Einkommen oder ein skalierbares Partnergeschäft – Sie wählen den Weg, der zu Ihnen passt.</p>
 </section>
 
-<!-- LIVE AVATAR -->
-<section id="avatar" class="avatar-section container">
-
+<section class="avatar-section container">
   <div class="section-badge">Meine Assistentin ist für Sie da</div>
-
-  <h2 style="font-size:40px; margin-bottom:20px; text-align:center;">Maria begleitet Sie</h2>
-
-  <p style="max-width:720px; margin:0 auto 40px; font-size:19px;">
+  <h2 style="font-size:40px;">Maria begleitet Sie</h2>
+  <p style="max-width:720px;margin:0 auto 40px;font-size:19px;">
     Sprechen Sie mit Maria – sie erklärt Ihnen die aktuellen Möglichkeiten, beantwortet Ihre Fragen
     und organisiert auf Wunsch ein persönliches Gespräch mit mir.
   </p>
-
   <div class="avatar-frame">
-    
-<iframe src="https://embed.liveavatar.com/v1/b66ef800-ec38-4a2d-8560-be4a2e0d53f1" allow="microphone" title="LiveAvatar Embed" style="aspect-ratio: 16/9;"></iframe>
-
+    <iframe src="https://embed.liveavatar.com/v1/b66ef800-ec38-4a2d-8560-be4a2e0d53f1" allow="microphone"></iframe>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="container">
-
-  <h2 style="text-align:center; font-size:40px;">Über mich</h2>
-
-  <ul class="list" style="max-width:760px; margin:30px auto;">
+  <h2 style="text-align:center;font-size:40px;">Über mich</h2>
+  <ul class="list">
     <li>Über 20 Jahre Erfahrung im Finanzbereich</li>
     <li>Komplexe Themen einfach erklärt</li>
     <li>Einsteigerbegleitung ohne Überforderung</li>
@@ -244,29 +155,69 @@ footer p { color:#555; margin-top:25px; }
   </ul>
 </section>
 
-<!-- FORM -->
 <section class="container">
   <div class="form-wrapper">
-    <h2>Ihr erster Schritt</h2>
-    <p>Hinterlassen Sie Ihre Anfrage – ich melde mich persönlich.</p>
+    <h2>Kontaktieren Sie mich</h2>
+    <p>Was trifft mehr zu? </p>
 
-    <form>
-      <input type="text" placeholder="Ihr Name" required />
-      <input type="text" placeholder="Telefon / WhatsApp / Telegram" required />
-      <input type="text" placeholder="Ihr Anliegen (kurz)" required />
-      <button type="submit" class="btn" style="width:100%;">Anfrage senden</button>
-    </form>
+    <div class="options">
+      <div class="option active" data-interest="Passives Einkommen">Passives Einkommen</div>
+      <div class="option" data-interest="Teamaufbau">Teamaufbau</div>
+      <div class="option" data-interest="Allgemeiner Überblick">Allgemeiner Überblick</div>
+    </div>
+
+    <div class="icons">
+      <a id="waLink" class="icon-btn whatsapp" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.52 3.48A11.91 11.91 0 0012.06 0C5.5 0 .14 5.37.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.79 1.48h.01c6.57 0 11.93-5.37 11.93-11.94a11.87 11.87 0 00-3.48-8.42z"/>
+        </svg>
+        <div class="icon-label">WhatsApp</div>
+      </a>
+
+      <a id="tgLink" class="icon-btn telegram" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.04 15.45l-.38 5.35c.55 0 .78-.24 1.06-.52l2.54-2.42 5.27 3.86c.97.53 1.66.25 1.9-.9L24 2.66c.3-1.36-.5-1.9-1.42-1.56L1.6 9.33c-1.33.53-1.31 1.28-.23 1.61l5.33 1.66L19.3 4.7c.6-.39 1.15-.18.7.21z"/>
+        </svg>
+        <div class="icon-label">Telegram</div>
+      </a>
+    </div>
+
+    <p style="margin-top:18px;font-size:12px;color:#7f859a;">
+      Direkter Kontakt. Kein Spam.
+    </p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-
-  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414"
-     target="_blank">Präsentation herunterladen</a>
-
+  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank">
+    Präsentation herunterladen
+  </a>
   <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
+
+<script>
+const options=document.querySelectorAll('.option');
+const waLink=document.getElementById('waLink');
+const tgLink=document.getElementById('tgLink');
+let selected='Passives Einkommen';
+const whatsappNumber='491748660007';
+const telegramUser='cryptopopp';
+
+function updateLinks(){
+  const text=encodeURIComponent(`Hallo Alexander, ich interessiere mich für: ${selected}`);
+  waLink.href=`https://wa.me/${whatsappNumber}?text=${text}`;
+  tgLink.href=`https://t.me/${telegramUser}?text=${text}`;
+}
+options.forEach(o=>{
+  o.onclick=()=>{
+    options.forEach(x=>x.classList.remove('active'));
+    o.classList.add('active');
+    selected=o.dataset.interest;
+    updateLinks();
+  };
+});
+updateLinks();
+</script>
 
 </body>
 </html>
