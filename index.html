@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -46,19 +47,16 @@ margin-bottom:30px;
 
 /* === UPDATED FRAME (reduce multiple borders + premium look) === */
 .avatar-frame{
-  max-width:720px;
-  margin:0 auto;
-  border-radius:var(--radius);
-  overflow:hidden;
-
-  border: 1px solid rgba(0,255,157,.72);
-  box-shadow: 0 0 22px rgba(0,255,157,.22);
-
-  background:#000;
-  padding: 8px;   /* было 12px */
-  position:relative;
+max-width:720px;
+margin:0 auto;
+border-radius:var(--radius);
+overflow:hidden;
+border:1px solid rgba(0,255,157,.72);
+box-shadow:0 0 22px rgba(0,255,157,.22);
+background:#000;
+padding:8px;
+position:relative;
 }
-
 
 /* === PHOTO PREVIEW (replace embed) === */
 .photo-preview{
@@ -255,6 +253,9 @@ right:12px;
 </style>
 </head>
 <body>
+
+<div id="pageRoot">
+
 <div class="lang-switcher">
 <a href="../en/index.html">EN</a>
 <a href="../ru/index.html">RU</a>
@@ -329,18 +330,29 @@ Direkter Kontakt. Kein Spam.
 
 <footer>
 <a href="https://portal.tagmarkets.com/live_signup?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE" target="_blank">
-Werde Teil meines Teams</a>
+Werde Teil meines Teams
+</a>
 <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" style="margin-left:30px;">
 Präsentation herunterladen
 </a>
 <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
 
+</div>
+
 <!-- Wireframe Modal -->
-<div id="wireframeBackdrop" class="wf-backdrop" aria-hidden="true"></div>
-<div id="wireframeModal" class="wf-modal" aria-hidden="true" role="dialog" aria-label="Live Dialog">
+<div id="wireframeBackdrop" class="wf-backdrop"></div>
+<div id="wireframeModal" class="wf-modal" role="dialog" aria-label="Live Dialog" aria-modal="true">
   <button class="wf-close" type="button" aria-label="Close" onclick="closeWireframe()">✕</button>
-  <iframe id="wireframeFrame" class="wf-iframe" src="" title="Live Dialog"></iframe>
+  <iframe
+    id="wireframeFrame"
+    class="wf-iframe"
+    src=""
+    title="Live Dialog"
+    tabindex="-1"
+    allow="microphone; camera; autoplay; clipboard-read; clipboard-write; fullscreen"
+    allowfullscreen
+  ></iframe>
 </div>
 
 <script>
@@ -367,17 +379,28 @@ updateLinks();
 </script>
 
 <script>
+let lastFocusEl = null;
+
 function openWireframe(url){
   const frame = document.getElementById('wireframeFrame');
+  const backdrop = document.getElementById('wireframeBackdrop');
+  const modal = document.getElementById('wireframeModal');
+
+  lastFocusEl = document.activeElement;
+
   frame.src = url;
 
   document.documentElement.classList.add('wf-open');
   document.body.style.overflow = 'hidden';
 
-  const backdrop = document.getElementById('wireframeBackdrop');
-  backdrop.onclick = closeWireframe;
+  const main = document.getElementById('pageRoot');
+  if (main) main.inert = true;
 
+  backdrop.onclick = closeWireframe;
   document.addEventListener('keydown', escClose);
+
+  modal.setAttribute('tabindex', '-1');
+  modal.focus();
 }
 
 function closeWireframe(){
@@ -387,7 +410,14 @@ function closeWireframe(){
   document.documentElement.classList.remove('wf-open');
   document.body.style.overflow = '';
 
+  const main = document.getElementById('pageRoot');
+  if (main) main.inert = false;
+
   document.removeEventListener('keydown', escClose);
+
+  if (lastFocusEl && typeof lastFocusEl.focus === 'function') {
+    lastFocusEl.focus();
+  }
 }
 
 function escClose(e){
@@ -397,3 +427,4 @@ function escClose(e){
 
 </body>
 </html>
+```
