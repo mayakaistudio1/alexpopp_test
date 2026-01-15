@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -21,6 +20,7 @@
   --font-main:'Montserrat',sans-serif;
   --font-alt:'Inter',sans-serif;
 }
+
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   background:var(--bg-black);
@@ -30,8 +30,10 @@ body{
 }
 section{padding:70px 20px;}
 .container{max-width:1080px;margin:0 auto;}
+
 .lang-switcher{text-align:right;padding:20px 30px;}
 .lang-switcher a{margin-left:15px;color:var(--neo-green);font-weight:700;text-decoration:none;font-size:14px;}
+
 .badge,.section-badge{
   display:inline-block;
   padding:10px 22px;
@@ -42,9 +44,11 @@ section{padding:70px 20px;}
   font-size:14px;
   margin-bottom:30px;
 }
+
 .hero{text-align:center;padding-top:80px;padding-bottom:30px;}
 .hero h1{font-size:58px;font-weight:900;margin-bottom:18px;}
 .hero p{max-width:780px;margin:0 auto 18px;font-size:20px;color:var(--text-muted);}
+
 .avatar-section{text-align:center;padding-top:40px!important;padding-bottom:70px;}
 .avatar-frame{
   max-width:720px;
@@ -57,34 +61,71 @@ section{padding:70px 20px;}
   padding:20px;
   position:relative;
 }
-.avatar-frame iframe{
+
+/* === PHOTO PREVIEW === */
+.photo-preview{
+  position: relative;
+  width:100%;
+  border-radius:10px;
+  overflow:hidden;
+  background:#000;
+}
+
+/* Фото занимает место аватара */
+.photo-preview img{
   width:100%;
   height:450px;
-  border:none;
-  border-radius:10px;
+  object-fit:cover;
   display:block;
+  border-radius:10px;
+  filter: saturate(1.05) contrast(1.03);
 }
+
+/* Лёгкая “премиум” виньетка снизу, чтобы кнопка читалась */
+.photo-preview::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:140px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 80%);
+  pointer-events:none;
+}
+
+/* Кнопка поверх фото */
 .speaken-btn{
   position:absolute;
   bottom:45px;
   right:45px;
-  background:#00FF9D;
+  background: var(--neo-green);
   color:#000;
   border:none;
   padding:14px 28px;
   font-size:16px;
-  font-weight:700;
-  border-radius:8px;
+  font-weight:800;
+  border-radius:10px;
   cursor:pointer;
-  transition:all 0.3s ease;
-  font-family:Montserrat;
-  box-shadow:0 0 22px rgba(0,255,157,0.35);
+  transition:all .25s ease;
+  font-family: var(--font-main);
+  box-shadow: var(--neo-glow);
   z-index:10;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 .speaken-btn:hover{
   transform:scale(1.05);
   box-shadow:0 0 32px rgba(0,255,157,0.5);
 }
+.speaken-btn:active{transform:scale(0.99);}
+
+.speaken-btn small{
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: 12px;
+  opacity:.75;
+}
+
+/* LIST */
 .list{text-align:center;list-style:none;}
 .list li{margin-bottom:14px;font-size:19px;color:var(--text-muted);}
 
@@ -143,9 +184,9 @@ footer p{color:#555;margin-top:25px;}
 @media(max-width:768px){
   .hero h1{font-size:38px;}
   .hero p{font-size:18px;}
-  .avatar-frame iframe{height:300px;}
+  .photo-preview img{height:300px;}
   .speaken-btn{
-    padding:10px 20px;
+    padding:12px 18px;
     font-size:14px;
     bottom:20px;
     right:20px;
@@ -177,10 +218,15 @@ footer p{color:#555;margin-top:25px;}
     Sprechen Sie mit Maria – sie erklärt Ihnen die aktuellen Möglichkeiten, beantwortet Ihre Fragen
     und organisiert auf Wunsch ein persönliches Gespräch mit mir.
   </p>
+
   <div class="avatar-frame">
-    <iframe src="https://embed.liveavatar.com/v1/aafead59-708c-4f7a-80da-1d1b94c5ddb2" allow="microphone" title="LiveAvatar Embed" style="aspect-ratio: 16/9;"></iframe>
-    <button class="speaken-btn" onclick="window.open('https://popp-api.vercel.app/demo.html', '_blank');">
-      🎤 Sprechen
+    <div class="photo-preview">
+      <!-- ПОЛОЖИ ФОТО В ЭТУ ЖЕ ПАПКУ и назови maria.jpg -->
+      <img src="maria.jpeg" alt="Maria — Assistant Preview">
+    </div>
+
+    <button class="speaken-btn" type="button" onclick="window.open('https://popp-api.vercel.app/demo.html', '_blank', 'noopener');">
+      🎤 Sprechen <small>Live starten</small>
     </button>
   </div>
 </section>
@@ -199,7 +245,7 @@ footer p{color:#555;margin-top:25px;}
 <section class="container">
   <div class="form-wrapper">
     <h2>Kontaktieren Sie mich</h2>
-    <p>Was trifft mehr zu? </p>
+    <p>Was trifft mehr zu?</p>
 
     <div class="options">
       <div class="option active" data-interest="Passives Einkommen">Passives Einkommen</div>
@@ -208,50 +254,50 @@ footer p{color:#555;margin-top:25px;}
     </div>
 
     <div class="icons">
-      <a id="waLink" class="icon-btn whatsapp" target="_blank">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <a id="waLink" class="icon-btn whatsapp" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M20.52 3.48A11.91 11.91 0 0012.06 0C5.5 0 .14 5.37.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.79 1.48h.01c6.57 0 11.93-5.37 11.93-11.94a11.87 11.87 0 00-3.48-8.42z"/>
         </svg>
         <div class="icon-label">WhatsApp</div>
       </a>
 
-      <a id="tgLink" class="icon-btn telegram" target="_blank">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <a id="tgLink" class="icon-btn telegram" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M9.04 15.45l-.38 5.35c.55 0 .78-.24 1.06-.52l2.54-2.42 5.27 3.86c.97.53 1.66.25 1.9-.9L24 2.66c.3-1.36-.5-1.9-1.42-1.56L1.6 9.33c-1.33.53-1.31 1.28-.23 1.61l5.33 1.66L19.3 4.7c.6-.39 1.15-.18.7.21z"/>
         </svg>
         <div class="icon-label">Telegram</div>
       </a>
     </div>
 
-    <p style="margin-top:18px;font-size:12px;color:#7f859a;">
-      Direkter Kontakt. Kein Spam.
-    </p>
+    <p style="margin-top:18px;font-size:12px;color:#7f859a;">Direkter Kontakt. Kein Spam.</p>
   </div>
 </section>
 
 <footer>
-  <a href="https://t.me/cryptopopp?text=Hallo%20Alexander%2C%20ich%20m%C3%B6chte%20meinem%20Team%20beitreten" target="_blank">
+  <a href="https://t.me/cryptopopp?text=Hallo%20Alexander%2C%20ich%20m%C3%B6chte%20meinem%20Team%20beitreten" target="_blank" rel="noopener">
     Join my team
   </a>
-  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" style="margin-left:30px;">
+  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" rel="noopener" style="margin-left:30px;">
     Präsentation herunterladen
   </a>
   <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
 
 <script>
-const options=document.querySelectorAll('.option');
-const waLink=document.getElementById('waLink');
-const tgLink=document.getElementById('tgLink');
-let selected='Passives Einkommen';
-const whatsappNumber='491748660007';
-const telegramUser='cryptopopp';
+const options = document.querySelectorAll('.option');
+const waLink = document.getElementById('waLink');
+const tgLink = document.getElementById('tgLink');
+
+let selected = 'Passives Einkommen';
+const whatsappNumber = '491748660007';
+const telegramUser = 'cryptopopp';
 
 function updateLinks(){
-  const text=encodeURIComponent(`Hallo Alexander, ich interessiere mich für: ${selected}`);
-  waLink.href=`https://wa.me/${whatsappNumber}?text=${text}`;
-  tgLink.href=`https://t.me/${telegramUser}?text=${text}`;
+  const text = encodeURIComponent(`Hallo Alexander, ich interessiere mich für: ${selected}`);
+  waLink.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+  tgLink.href = `https://t.me/${telegramUser}?text=${text}`;
 }
+
 options.forEach(o=>{
   o.onclick=()=>{
     options.forEach(x=>x.classList.remove('active'));
@@ -260,6 +306,7 @@ options.forEach(o=>{
     updateLinks();
   };
 });
+
 updateLinks();
 </script>
 
