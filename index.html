@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -354,7 +355,7 @@ Direkter Kontakt. Kein Spam.
 
 <footer>
   <div class="footer-links">
-    <a href="https://portal.tagmarkets.com/live_signup?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE" target="_blank">Werde Teil meines Teams</a>
+    <a href="https://exfusion.ibportal.io/auth/register?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE&e=VOCaVNCHXn4kFyyZUN2b5Q8osF2EwWkEV49/Lasq/XQ=&a=1" target="_blank">Werde Teil meines Teams</a>
     <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank">Präsentation herunterladen</a>
   </div>
   <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
@@ -445,7 +446,24 @@ function closeWireframe(){
 function escClose(e){
   if(e.key === 'Escape') closeWireframe();
 }
+
+/* ✅ NEW: закрывать модалку по команде из iframe */
+window.addEventListener('message', (event) => {
+  const data = event.data || {};
+  if (!data || data.type !== 'closeWireframe') return;
+
+  // защита: принимаем только от твоего Vercel-виджета
+  const origin = event.origin || "";
+  const allowed =
+    origin === "https://popp-api.vercel.app" ||
+    origin.endsWith(".vercel.app");
+
+  if (!allowed) return;
+
+  closeWireframe();
+});
 </script>
 
 </body>
 </html>
+```
