@@ -249,6 +249,31 @@ top:12px;
 right:12px;
 }
 }
+  .footer-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+}
+
+@media(max-width:768px){
+  .footer-links{
+    flex-direction:column;
+    gap:14px;
+  }
+  .footer-links a{
+    width:100%;
+    max-width:320px;
+  }
+}
 </style>
 </head>
 <body>
@@ -328,14 +353,17 @@ Direkter Kontakt. Kein Spam.
 </section>
 
 <footer>
-<a href="https://portal.tagmarkets.com/live_signup?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE" target="_blank">
-Werde Teil meines Teams
-</a>
-<a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" style="margin-left:30px;">
-Präsentation herunterladen
-</a>
-<p>© 2025 Alexander Popp — Mentorship & Trading System</p>
+  <div class="footer-links">
+    <a href="https://portal.tagmarkets.com/live_signup?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE" target="_blank">
+      Werde Teil meines Teams
+    </a>
+    <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank">
+      Präsentation herunterladen
+    </a>
+  </div>
+  <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
+
 
 </div>
 
