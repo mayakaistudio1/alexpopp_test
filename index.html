@@ -4,310 +4,392 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexander Popp — Trading System</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
 :root {
-  --neo-green:#00FF9D;
-  --neo-green-dark:#00CC7D;
-  --neo-glow:0 0 22px rgba(0,255,157,.35);
-  --bg-black:#000;
-  --bg-card:#0F0F0F;
-  --text-white:#fff;
-  --text-muted:#B8B8B8;
-  --radius:14px;
-  --font-main:'Montserrat',sans-serif;
-  --font-alt:'Inter',sans-serif;
+--neo-green:#00FF9D;
+--neo-green-dark:#00CC7D;
+--neo-glow:0 0 22px rgba(0,255,157,.35);
+--bg-black:#000;
+--bg-card:#0F0F0F;
+--text-white:#fff;
+--text-muted:#B8B8B8;
+--radius:14px;
+--font-main:'Montserrat',sans-serif;
+--font-alt:'Inter',sans-serif;
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  background:var(--bg-black);
-  color:var(--text-white);
-  font-family:var(--font-main);
-  line-height:1.55;
+background:var(--bg-black);
+color:var(--text-white);
+font-family:var(--font-main);
+line-height:1.55;
 }
 section{padding:70px 20px;}
 .container{max-width:1080px;margin:0 auto;}
-
 .lang-switcher{text-align:right;padding:20px 30px;}
 .lang-switcher a{margin-left:15px;color:var(--neo-green);font-weight:700;text-decoration:none;font-size:14px;}
-
 .badge,.section-badge{
-  display:inline-block;
-  padding:10px 22px;
-  background:var(--neo-green);
-  color:#000;
-  font-weight:700;
-  border-radius:30px;
-  font-size:14px;
-  margin-bottom:30px;
+display:inline-block;
+padding:10px 22px;
+background:var(--neo-green);
+color:#000;
+font-weight:700;
+border-radius:30px;
+font-size:14px;
+margin-bottom:30px;
 }
-
 .hero{text-align:center;padding-top:80px;padding-bottom:30px;}
 .hero h1{font-size:58px;font-weight:900;margin-bottom:18px;}
 .hero p{max-width:780px;margin:0 auto 18px;font-size:20px;color:var(--text-muted);}
-
 .avatar-section{text-align:center;padding-top:40px!important;padding-bottom:70px;}
+
+/* === UPDATED FRAME (reduce multiple borders + premium look) === */
 .avatar-frame{
-  max-width:720px;
-  margin:0 auto;
-  border-radius:var(--radius);
-  overflow:hidden;
-  border:2px solid var(--neo-green);
-  box-shadow:var(--neo-glow);
-  background:var(--bg-card);
-  padding:20px;
-  position:relative;
+max-width:720px;
+margin:0 auto;
+border-radius:var(--radius);
+overflow:hidden;
+border:1.5px solid rgba(0,255,157,.85);
+box-shadow:0 0 26px rgba(0,255,157,.28);
+background:#000;
+padding:12px;
+position:relative;
 }
 
-/* === PHOTO PREVIEW === */
+/* === PHOTO PREVIEW (replace embed) === */
 .photo-preview{
-  position: relative;
-  width:100%;
-  border-radius:10px;
-  overflow:hidden;
-  background:#000;
+position:relative;
+width:100%;
+border-radius:calc(var(--radius) - 6px);
+overflow:hidden;
+background:#000;
 }
-
-/* Фото занимает место аватара */
 .photo-preview img{
-  width:100%;
-  height:450px;
-  object-fit:cover;
-  display:block;
-  border-radius:10px;
-  filter: saturate(1.05) contrast(1.03);
+width:100%;
+height:450px;
+object-fit:cover;
+display:block;
+border-radius:calc(var(--radius) - 6px);
+transform:scale(1.08);
+transform-origin:center;
+filter:saturate(1.05) contrast(1.03);
 }
-
-/* Лёгкая “премиум” виньетка снизу, чтобы кнопка читалась */
 .photo-preview::after{
-  content:"";
-  position:absolute;
-  left:0; right:0; bottom:0;
-  height:140px;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 80%);
-  pointer-events:none;
+content:"";
+position:absolute;
+left:0; right:0; bottom:0;
+height:110px;
+background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 80%);
+pointer-events:none;
 }
 
-/* Кнопка поверх фото */
+/* === BUTTON === */
 .speaken-btn{
-  position:absolute;
-  bottom:45px;
-  right:45px;
-  background: var(--neo-green);
-  color:#000;
-  border:none;
-  padding:14px 28px;
-  font-size:16px;
-  font-weight:800;
-  border-radius:10px;
-  cursor:pointer;
-  transition:all .25s ease;
-  font-family: var(--font-main);
-  box-shadow: var(--neo-glow);
-  z-index:10;
-  display:flex;
-  align-items:center;
-  gap:10px;
+position:absolute;
+bottom:45px;
+right:45px;
+background:#00FF9D;
+color:#000;
+border:none;
+padding:14px 28px;
+font-size:16px;
+font-weight:700;
+border-radius:8px;
+cursor:pointer;
+transition:all 0.3s ease;
+font-family:Montserrat;
+box-shadow:0 0 22px rgba(0,255,157,0.35);
+z-index:10;
+display:flex;
+align-items:center;
+gap:10px;
 }
 .speaken-btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 32px rgba(0,255,157,0.5);
+transform:scale(1.05);
+box-shadow:0 0 32px rgba(0,255,157,0.5);
 }
-.speaken-btn:active{transform:scale(0.99);}
-
 .speaken-btn small{
-  font-family: var(--font-alt);
-  font-weight: 600;
-  font-size: 12px;
-  opacity:.75;
+font-family:var(--font-alt);
+font-weight:600;
+font-size:12px;
+opacity:.75;
 }
 
-/* LIST */
 .list{text-align:center;list-style:none;}
 .list li{margin-bottom:14px;font-size:19px;color:var(--text-muted);}
-
 /* CONTACT */
 .form-wrapper{
-  max-width:520px;
-  margin:0 auto;
-  background:var(--bg-card);
-  padding:40px;
-  border-radius:var(--radius);
-  border:1px solid #1A1A1A;
-  text-align:center;
+max-width:520px;
+margin:0 auto;
+background:var(--bg-card);
+padding:40px;
+border-radius:var(--radius);
+border:1px solid #1A1A1A;
+text-align:center;
 }
 .options{display:flex;flex-direction:column;gap:14px;margin:26px 0;}
 .option{
-  padding:16px;
-  border-radius:14px;
-  background:#000;
-  border:1px solid #222;
-  cursor:pointer;
+padding:16px;
+border-radius:14px;
+background:#000;
+border:1px solid #222;
+cursor:pointer;
 }
 .option.active{
-  border-color:var(--neo-green);
-  box-shadow:var(--neo-glow);
+border-color:var(--neo-green);
+box-shadow:var(--neo-glow);
 }
 .icons{
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  margin-top:10px;
+display:flex;
+justify-content:center;
+gap:28px;
+margin-top:10px;
 }
 .icon-btn{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:#000;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#000;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-decoration:none;
 }
 .whatsapp{color:#25d366;box-shadow:0 0 22px rgba(37,211,102,.45);}
 .telegram{color:#2aabee;box-shadow:0 0 22px rgba(42,171,238,.45);}
 .icon-label{font-size:10px;color:#9aa0b5;margin-top:4px;}
-
 footer{
-  padding:50px 20px;
-  text-align:center;
-  background:#080808;
-  margin-top:60px;
+padding:50px 20px;
+text-align:center;
+background:#080808;
+margin-top:60px;
 }
 footer a{color:var(--neo-green);text-decoration:none;}
 footer p{color:#555;margin-top:25px;}
 
+/* === WIREFRAME MODAL (open vercel inside overlay, no address bar visible) === */
+.wf-backdrop{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+opacity:0;
+pointer-events:none;
+transition:opacity .25s ease;
+z-index:99990;
+}
+.wf-modal{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:14px;
+opacity:0;
+pointer-events:none;
+transition:opacity .25s ease;
+z-index:99991;
+}
+.wf-iframe{
+width:min(1180px, 100%);
+height:min(92vh, 900px);
+border:none;
+border-radius:18px;
+background:#000;
+box-shadow:0 22px 70px rgba(0,0,0,.75);
+}
+.wf-close{
+position:fixed;
+top:18px;
+right:18px;
+width:46px;
+height:46px;
+border-radius:50%;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.06);
+color:rgba(255,255,255,.9);
+font-size:24px;
+cursor:pointer;
+z-index:99992;
+transition:all .2s ease;
+}
+.wf-close:hover{
+background:rgba(255,255,255,.12);
+transform:scale(1.05);
+}
+.wf-open .wf-backdrop,
+.wf-open .wf-modal{
+opacity:1;
+pointer-events:auto;
+}
+
 @media(max-width:768px){
-  .hero h1{font-size:38px;}
-  .hero p{font-size:18px;}
-  .photo-preview img{height:300px;}
-  .speaken-btn{
-    padding:12px 18px;
-    font-size:14px;
-    bottom:20px;
-    right:20px;
-  }
+.hero h1{font-size:38px;}
+.hero p{font-size:18px;}
+.photo-preview img{height:300px;transform:scale(1.10);}
+.speaken-btn{
+padding:10px 20px;
+font-size:14px;
+bottom:20px;
+right:20px;
+}
+
+/* modal mobile full-screen */
+.wf-modal{padding:0;}
+.wf-iframe{
+width:100%;
+height:100%;
+border-radius:0;
+}
+.wf-close{
+top:12px;
+right:12px;
+}
 }
 </style>
 </head>
-
 <body>
-
 <div class="lang-switcher">
-  <a href="../en/index.html">EN</a>
-  <a href="../ru/index.html">RU</a>
-  <a href="../index.html">DE</a>
+<a href="../en/index.html">EN</a>
+<a href="../ru/index.html">RU</a>
+<a href="../index.html">DE</a>
 </div>
-
 <section class="hero container">
-  <div class="badge">Nur 10 Plätze in der ersten Linie verfügbar</div>
-  <h1>Dein Wegweiser in die Welt des passiven Einkommens.</h1>
-  <p>Heute entscheide ich mich für Forex – einen Markt, in dem Ihr Geld für Sie arbeiten kann.</p>
-  <p>Ich zeige Ihnen das System, mit dem ich selbst arbeite: klar strukturiert, transparent und für jeden zugänglich.</p>
-  <p>Ob passives Einkommen oder ein skalierbares Partnergeschäft – Sie wählen den Weg, der zu Ihnen passt.</p>
+<div class="badge">Nur 10 Plätze in der ersten Linie verfügbar</div>
+<h1>Dein Wegweiser in die Welt des passiven Einkommens.</h1>
+<p>Heute entscheide ich mich für Forex – einen Markt, in dem Ihr Geld für Sie arbeiten kann.</p>
+<p>Ich zeige Ihnen das System, mit dem ich selbst arbeite: klar strukturiert, transparent und für jeden zugänglich.</p>
+<p>Ob passives Einkommen oder ein skalierbares Partnergeschäft – Sie wählen den Weg, der zu Ihnen passt.</p>
 </section>
 
 <section class="avatar-section container">
-  <div class="section-badge">Meine Assistentin ist für Sie da</div>
-  <h2 style="font-size:40px;">Maria begleitet Sie</h2>
-  <p style="max-width:720px;margin:0 auto 40px;font-size:19px;">
-    Sprechen Sie mit Maria – sie erklärt Ihnen die aktuellen Möglichkeiten, beantwortet Ihre Fragen
-    und organisiert auf Wunsch ein persönliches Gespräch mit mir.
-  </p>
+<div class="section-badge">Meine Assistentin ist für Sie da</div>
+<h2 style="font-size:40px;">Maria begleitet Sie</h2>
+<p style="max-width:720px;margin:0 auto 40px;font-size:19px;">
+Sprechen Sie mit Maria – sie erklärt Ihnen die aktuellen Möglichkeiten, beantwortet Ihre Fragen
+und organisiert auf Wunsch ein persönliches Gespräch mit mir.
+</p>
 
-  <div class="avatar-frame">
-    <div class="photo-preview">
-      <!-- ПОЛОЖИ ФОТО В ЭТУ ЖЕ ПАПКУ и назови maria.jpg -->
-      <img src="maria.jpeg" alt="Maria — Assistant Preview">
-    </div>
-
-    <button class="speaken-btn" type="button" onclick="window.open('https://popp-api.vercel.app/demo.html', '_blank', 'noopener');">
-      🎤 Sprechen <small>Live starten</small>
-    </button>
+<div class="avatar-frame">
+  <div class="photo-preview">
+    <img src="maria.jpeg" alt="Maria — Assistant Preview">
   </div>
+
+  <button class="speaken-btn" type="button" onclick="openWireframe('https://popp-api.vercel.app/demo.html')">
+    🎤 Sprechen <small>Live starten</small>
+  </button>
+</div>
 </section>
 
 <section class="container">
-  <h2 style="text-align:center;font-size:40px;">Über mich</h2>
-  <ul class="list">
-    <li>Über 20 Jahre Erfahrung im Finanzbereich</li>
-    <li>Komplexe Themen einfach erklärt</li>
-    <li>Einsteigerbegleitung ohne Überforderung</li>
-    <li>Ein System, das sich leicht duplizieren lässt</li>
-    <li>Unterstützung beim Aufbau eines starken Teams</li>
-  </ul>
+<h2 style="text-align:center;font-size:40px;">Über mich</h2>
+<ul class="list">
+<li>Über 20 Jahre Erfahrung im Finanzbereich</li>
+<li>Komplexe Themen einfach erklärt</li>
+<li>Einsteigerbegleitung ohne Überforderung</li>
+<li>Ein System, das sich leicht duplizieren lässt</li>
+<li>Unterstützung beim Aufbau eines starken Teams</li>
+</ul>
 </section>
 
 <section class="container">
-  <div class="form-wrapper">
-    <h2>Kontaktieren Sie mich</h2>
-    <p>Was trifft mehr zu?</p>
-
-    <div class="options">
-      <div class="option active" data-interest="Passives Einkommen">Passives Einkommen</div>
-      <div class="option" data-interest="Teamaufbau">Teamaufbau</div>
-      <div class="option" data-interest="Allgemeiner Überblick">Allgemeiner Überblick</div>
-    </div>
-
-    <div class="icons">
-      <a id="waLink" class="icon-btn whatsapp" target="_blank" rel="noopener">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.52 3.48A11.91 11.91 0 0012.06 0C5.5 0 .14 5.37.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.79 1.48h.01c6.57 0 11.93-5.37 11.93-11.94a11.87 11.87 0 00-3.48-8.42z"/>
-        </svg>
-        <div class="icon-label">WhatsApp</div>
-      </a>
-
-      <a id="tgLink" class="icon-btn telegram" target="_blank" rel="noopener">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M9.04 15.45l-.38 5.35c.55 0 .78-.24 1.06-.52l2.54-2.42 5.27 3.86c.97.53 1.66.25 1.9-.9L24 2.66c.3-1.36-.5-1.9-1.42-1.56L1.6 9.33c-1.33.53-1.31 1.28-.23 1.61l5.33 1.66L19.3 4.7c.6-.39 1.15-.18.7.21z"/>
-        </svg>
-        <div class="icon-label">Telegram</div>
-      </a>
-    </div>
-
-    <p style="margin-top:18px;font-size:12px;color:#7f859a;">Direkter Kontakt. Kein Spam.</p>
-  </div>
+<div class="form-wrapper">
+<h2>Kontaktieren Sie mich</h2>
+<p>Was trifft mehr zu? </p>
+<div class="options">
+<div class="option active" data-interest="Passives Einkommen">Passives Einkommen</div>
+<div class="option" data-interest="Teamaufbau">Teamaufbau</div>
+<div class="option" data-interest="Allgemeiner Überblick">Allgemeiner Überblick</div>
+</div>
+<div class="icons">
+<a id="waLink" class="icon-btn whatsapp" target="_blank">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M20.52 3.48A11.91 11.91 0 0012.06 0C5.5 0 .14 5.37.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 005.79 1.48h.01c6.57 0 11.93-5.37 11.93-11.94a11.87 11.87 0 00-3.48-8.42z"/>
+</svg>
+<div class="icon-label">WhatsApp</div>
+</a>
+<a id="tgLink" class="icon-btn telegram" target="_blank">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M9.04 15.45l-.38 5.35c.55 0 .78-.24 1.06-.52l2.54-2.42 5.27 3.86c.97.53 1.66.25 1.9-.9L24 2.66c.3-1.36-.5-1.9-1.42-1.56L1.6 9.33c-1.33.53-1.31 1.28-.23 1.61l5.33 1.66L19.3 4.7c.6-.39 1.15-.18.7.21z"/>
+</svg>
+<div class="icon-label">Telegram</div>
+</a>
+</div>
+<p style="margin-top:18px;font-size:12px;color:#7f859a;">
+Direkter Kontakt. Kein Spam.
+</p>
+</div>
 </section>
 
 <footer>
-  <a href="https://t.me/cryptopopp?text=Hallo%20Alexander%2C%20ich%20m%C3%B6chte%20meinem%20Team%20beitreten" target="_blank" rel="noopener">
-    Join my team
-  </a>
-  <a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" rel="noopener" style="margin-left:30px;">
-    Präsentation herunterladen
-  </a>
-  <p>© 2025 Alexander Popp — Mentorship & Trading System</p>
+<a href="https://portal.tagmarkets.com/live_signup?sidi=ADD07A5A-FF2D-4EA2-94C1-CA2C0A2AFBEE" target="_blank">
+Werde Teil meines Teams</a>
+<a href="https://www.notion.so/EXFUSION-THE-POWER-OF-EXCELLENCE-2c3c68ca641980868b5efd528671e414" target="_blank" style="margin-left:30px;">
+Präsentation herunterladen
+</a>
+<p>© 2025 Alexander Popp — Mentorship & Trading System</p>
 </footer>
 
+<!-- Wireframe Modal -->
+<div id="wireframeBackdrop" class="wf-backdrop" aria-hidden="true"></div>
+<div id="wireframeModal" class="wf-modal" aria-hidden="true" role="dialog" aria-label="Live Dialog">
+  <button class="wf-close" type="button" aria-label="Close" onclick="closeWireframe()">✕</button>
+  <iframe id="wireframeFrame" class="wf-iframe" src="" title="Live Dialog"></iframe>
+</div>
+
 <script>
-const options = document.querySelectorAll('.option');
-const waLink = document.getElementById('waLink');
-const tgLink = document.getElementById('tgLink');
-
-let selected = 'Passives Einkommen';
-const whatsappNumber = '491748660007';
-const telegramUser = 'cryptopopp';
-
+const options=document.querySelectorAll('.option');
+const waLink=document.getElementById('waLink');
+const tgLink=document.getElementById('tgLink');
+let selected='Passives Einkommen';
+const whatsappNumber='491748660007';
+const telegramUser='cryptopopp';
 function updateLinks(){
-  const text = encodeURIComponent(`Hallo Alexander, ich interessiere mich für: ${selected}`);
-  waLink.href = `https://wa.me/${whatsappNumber}?text=${text}`;
-  tgLink.href = `https://t.me/${telegramUser}?text=${text}`;
+const text=encodeURIComponent(`Hallo Alexander, ich interessiere mich für: ${selected}`);
+waLink.href=`https://wa.me/${whatsappNumber}?text=${text}`;
+tgLink.href=`https://t.me/${telegramUser}?text=${text}`;
+}
+options.forEach(o=>{
+o.onclick=()=>{
+options.forEach(x=>x.classList.remove('active'));
+o.classList.add('active');
+selected=o.dataset.interest;
+updateLinks();
+};
+});
+updateLinks();
+</script>
+
+<script>
+function openWireframe(url){
+  const frame = document.getElementById('wireframeFrame');
+  frame.src = url;
+
+  document.documentElement.classList.add('wf-open');
+  document.body.style.overflow = 'hidden';
+
+  const backdrop = document.getElementById('wireframeBackdrop');
+  backdrop.onclick = closeWireframe;
+
+  document.addEventListener('keydown', escClose);
 }
 
-options.forEach(o=>{
-  o.onclick=()=>{
-    options.forEach(x=>x.classList.remove('active'));
-    o.classList.add('active');
-    selected=o.dataset.interest;
-    updateLinks();
-  };
-});
+function closeWireframe(){
+  const frame = document.getElementById('wireframeFrame');
+  frame.src = "";
 
-updateLinks();
+  document.documentElement.classList.remove('wf-open');
+  document.body.style.overflow = '';
+
+  document.removeEventListener('keydown', escClose);
+}
+
+function escClose(e){
+  if(e.key === 'Escape') closeWireframe();
+}
 </script>
 
 </body>
